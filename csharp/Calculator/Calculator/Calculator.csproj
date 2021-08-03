@@ -8,9 +8,9 @@
     <Company>kmh-solutions</Company>
     <Description>Generated code for example Apache Thrift service</Description>
     <Copyright>2021 Martin Kloesch</Copyright>
-    <PackageLicenseUrl>https://github.com/kmhsonnenkind/apache-thrift-example/blob/main/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/kmhsonnenkind/apache-thrift-example</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/kmhsonnenkind/apache-thrift-example.git</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/kmhsonnenkind/thrift-example/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kmhsonnenkind/thrift-example</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kmhsonnenkind/thrift-example.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>example thrift</PackageTags>
   </PropertyGroup>

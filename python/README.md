@@ -37,7 +37,7 @@ The project uses [setuptools](https://setuptools.readthedocs.io/en/latest) and c
 
 ### Code Generation
 
-This projects offers the concrete client and server implementation of the [example calculator service](https://github.com/kmhsonnenkind/apache-thrift-example). To fully work it is required to generate the code based on its [calculator.thrift](https://github.com/kmhsonnenkind/thrift-example/blob/main/calculator.thrift) file. You can either call the `thrift` generator yourself or use the convenience functionality provided in the main repository (*scripts/make/py.mk* target `generate-code` or utility script *scripts/win/py/generate-code.bat*).
+This projects offers the concrete client and server implementation of the [example calculator service](https://github.com/kmhsonnenkind/thrift-example). To fully work it is required to generate the code based on its [calculator.thrift](https://github.com/kmhsonnenkind/thrift-example/blob/main/calculator.thrift) file. You can either call the `thrift` generator yourself or use the convenience functionality provided in the main repository (*scripts/make/py.mk* target `generate-code` or utility script *scripts/win/py/generate-code.bat*).
 
 ### Tests
 
