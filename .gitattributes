@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.bat text=auto eol=crlf
+java/calculator/gradle/* linguist-vendored
+java/calculator/gradlew* linguist-vendored

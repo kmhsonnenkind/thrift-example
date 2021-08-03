@@ -1,0 +1,176 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "generate code",
+            "type": "shell",
+            "command": "make",
+            "args": ["generate-code"],
+            "windows": {
+                "command": "scripts\\win\\generate-code.bat"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build (c#)",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "csharp/Calculator/Calculator.sln"
+            ],
+            "dependsOn": ["generate code"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$msCompile"]
+        },
+        {
+            "label": "build (java)",
+            "type": "shell",
+            "command": "java/calculator/gradlew",
+            "args": [
+                "-p", "java/calculator",
+                "build"],
+            "windows": {
+                "command": "java\\calculator\\gradlew.bat",
+                "args": [
+                    "-p", "java\\calculator",
+                    "build"
+                ]
+            },
+            "dependsOn": ["generate code"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$gradle"]
+        },
+        {
+            "label": "build (all)",
+            "group": "build",
+            "dependsOn": [
+                "build (c#)",
+                "build (java)"
+            ],
+            "dependsOrder": "parallel",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$gradle", "$msCompile"]
+        },
+        {
+            "label": "documentation (java)",
+            "type": "shell",
+            "command": "java/calculator/gradlew",
+            "args": [
+                "-p", "java/calculator",
+                "javadoc"],
+            "windows": {
+                "command": "java\\calculator\\gradlew.bat",
+                "args": [
+                    "-p", "java\\calculator",
+                    "javadoc"
+                ]
+            },
+            "dependsOn": ["generate code"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$gradle"]
+        },
+        {
+            "label": "documentation (py)",
+            "type": "shell",
+            "command": "${config:python.pythonPath}",
+            "args": [
+                "${workspaceFolder}/python/setup.py",
+                "build_sphinx"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "dependsOn": ["generate code"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "documentation (all)",
+            "group": "build",
+            "dependsOn": [
+                "documentation (java)",
+                "documentation (py)"
+            ],
+            "dependsOrder": "parallel",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": ["$gradle"]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean"],
+            "windows": {
+                "command": "scripts\\win\\clean.bat"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+    ]
+}

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Martin Kloesch</Authors>
+    <Product>Thrift Example</Product>
+    <Company>kmh-solutions</Company>
+    <Description>Generated code for example Apache Thrift service</Description>
+    <Copyright>2021 Martin Kloesch</Copyright>
+    <PackageLicenseUrl>https://github.com/kmhsonnenkind/apache-thrift-example/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kmhsonnenkind/apache-thrift-example</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kmhsonnenkind/apache-thrift-example.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>example thrift</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ApacheThrift" Version="0.14.2" />
+  </ItemGroup>
+
+</Project>

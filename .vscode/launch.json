@@ -1,0 +1,53 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "client (c#)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/csharp/Calculator/Client/bin/Debug/netcoreapp5.0/Calculator.Client.dll",
+            "preLaunchTask": "build (c#)",
+            "console": "internalConsole"
+        },
+        {
+            "name": "server (c#)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/csharp/Calculator/Server/bin/Debug/netcoreapp5.0/Calculator.Server.dll",
+            "preLaunchTask": "build (c#)",
+            "console": "internalConsole"
+        },
+        {
+            "name": "client (java)",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "calculator.client.CalculatorClient",
+            "preLaunchTask": "build (java)",
+            "console": "internalConsole"
+        },
+        {
+            "name": "server (java)",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "calculator.server.CalculatorServer",
+            "preLaunchTask": "build (java)",
+            "console": "internalConsole"
+        },
+        {
+            "name":"client (py)",
+            "type":"python",
+            "request":"launch",
+            "program":"${workspaceFolder}/python/calculator/client.py",
+            "preLaunchTask": "generate code",
+            "console": "internalConsole"
+        },
+        {
+            "name":"server (py)",
+            "type":"python",
+            "request":"launch",
+            "program":"${workspaceFolder}/python/calculator/server.py",
+            "preLaunchTask": "generate code",
+            "console": "internalConsole"
+        },
+    ]
+}

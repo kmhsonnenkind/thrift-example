@@ -1,0 +1,108 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2021 Martin Kloesch
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'com.github.spotbugs' version "4.7.2"
+    id 'checkstyle'
+}
+
+description = 'example thrift service and client'
+version = '0.0.1'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.thrift:libthrift:0.14.2'
+    implementation 'org.eclipse.jdt:org.eclipse.jdt.annotation:2.2.600'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.register('runClient', JavaExec) {
+    mainClass = 'calculator.client.CalculatorClient'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+tasks.register('runServer', JavaExec) {
+    mainClass = 'calculator.server.CalculatorServer'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+javadoc {
+    exclude 'calculator/gen/**'
+}
+
+spotbugs {
+    excludeFilter = file('config/spotbugs/exclude.xml')
+}
+
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+        }
+    }
+}
+
+eclipse {
+    classpath {
+        file {
+            whenMerged {
+                entries.forEach {
+                    if (it instanceof org.gradle.plugins.ide.eclipse.model.SourceFolder) {
+                        it.output = it.output.replace "bin/", "build/classes/java/"
+                    }
+                    if (it instanceof org.gradle.plugins.ide.eclipse.model.Output) {
+                        it.path = it.path.replace "bin/", "build/"
+                    }
+                }
+            }
+        }
+    }
+}

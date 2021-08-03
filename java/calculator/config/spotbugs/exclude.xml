@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+    <!-- Ignore generated code -->
+    <Match>
+        <Package name="calculator.gen" />
+    </Match>
+
+    <!-- Ignore mutable object reference warning as no workaround available -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2" />
+        <Class name="calculator.client.CalculatorClient$Builder" />
+        <Method name="withTransport" params="org.apache.thrift.transport.TTransport" returns="calculator.client.CalculatorClient$Builder" />
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2" />
+        <Class name="calculator.server.CalculatorServer$Builder" />
+        <Method name="withHandler" params="calculator.gen.CalculatorService$Iface" returns="calculator.server.CalculatorServer$Builder" />
+    </Match>
+</FindBugsFilter>

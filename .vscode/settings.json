@@ -1,0 +1,7 @@
+{
+    // Checked-in project configuration, set own settings in user configuration
+    "gradle.nestedProjects": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "python.testing.pytestEnabled": true,
+    "dotnet-test-explorer.testProjectPath": "csharp/Calculator/Calculator.sln"
+}
